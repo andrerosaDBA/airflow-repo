@@ -1,8 +1,5 @@
-pache-airflow==2.9.3
-pandas==2.2.2
-sqlalchemy==2.0.30
-psycopg2-binary==2.9.9
-pyodbc==5.1.0
-dbt-core=1.11.8
-dbt-postgres==1.10.0
-faker==25.8.0
+#pyodbc
+pandas
+#psycopg2-binary
+dbt-core
+dbt-postgres
