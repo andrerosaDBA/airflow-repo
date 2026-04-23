@@ -1,0 +1,27 @@
+
+
+#--Executar os procedimentos abaixo, apenas se houver conflitos com os containeres
+
+#--Apaga tudo
+docker compose down --volumes --remove-orphans
+docker rm -f $(docker ps -aq)
+docker rmi -f $(docker images -q)
+docker system prune -a --volumes -f
+
+#--Baixa a imagem e sobe os containeres
+docker pull apache/airflow:3.2.0
+
+#--Confere a versão do airflow
+docker run --rm apache/airflow:3.2.0 airflow version
+docker compose exec airflow-apiserver airflow version
+docker compose exec airflow-apiserver dbt --version
+
+#--Sobe todos os containeres
+docker compose up -d --build --force-recreate
+
+
+#--Confere o status dos containeres
+docker compose ps
+
+
+ 
